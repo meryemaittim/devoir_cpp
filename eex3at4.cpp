@@ -15,13 +15,13 @@ public:
         prenom=p;
         date_naissance=dn;
     }
-    // Méthode polymorphe Afficher
+    // MÃ©thode polymorphe Afficher
     virtual void Afficher() const {
         cout << "Nom: " << nom << ", Prenom: " << prenom << ", Date de naissance: " << date_naissance << endl;
     }
     virtual ~Personne() {} // Destructeur virtuel
 };
-// Classe Employe dérivant de Personne
+// Classe Employe dÃ©rivant de Personne
 class Employe : public Personne {
 private:
     double salaire;
@@ -30,13 +30,13 @@ public:
     // Constructeur
    Employe(const string& n, const string& p, const string& dn, double s)
         : Personne(n, p, dn), salaire(s) {}
-    // Redéfinition de la méthode Afficher
+    // RedÃ©finition de la mÃ©thode Afficher
     void Afficher() const override {
-        Personne::Afficher(); // Appel à la méthode de la classe mère
+        Personne::Afficher(); // Appel Ã  la mÃ©thode de la classe mÃ¨re
         cout << "Salaire: " << salaire <<  endl;
     }
 };
-// Classe Chef dérivant de Employe
+// Classe Chef dÃ©rivant de Employe
 class Chef : public Employe {
 private:
     string service;
@@ -46,14 +46,14 @@ public:
     Chef(const string& n, const string& p, const string& dn, double s, const string& svc)
         : Employe(n, p, dn, s), service(svc) {}
 
-    // Redéfinition de la méthode Afficher
+    // RedÃ©finition de la mÃ©thode Afficher
     void Afficher() const override {
-        Employe::Afficher(); // Appel à la méthode de la classe mère
+        Employe::Afficher(); // Appel Ã  la mÃ©thode de la classe mÃ¨re
         cout << "Service: " << service << endl;
     }
 };
 
-// Classe Directeur dérivant de Chef
+// Classe Directeur dÃ©rivant de Chef
 class Directeur : public Chef {
 private:
     string societe;
@@ -63,23 +63,23 @@ public:
     Directeur(const string& n, const string& p, const string& dn, double s, const string& svc, const string& soc)
         : Chef(n, p, dn, s, svc), societe(soc) {}
 
-    // Redéfinition de la méthode Afficher
+    // RedÃ©finition de la mÃ©thode Afficher
     void Afficher() const override {
-        Chef::Afficher(); // Appel à la méthode de la classe mère
+        Chef::Afficher(); // Appel Ã  la mÃ©thode de la classe mÃ¨re
         cout << "Societe: " << societe << endl;
     }
 };
 int main() {
-    // Création d'un Employé
+    // CrÃ©ation d'un EmployÃ©
     Employe employe("Durand", "Sophie", "10/10/1990", 50000);
     employe.Afficher();
 
     cout << endl;
-    // Création d'un Chef
+    // CrÃ©ation d'un Chef
     Chef chef("Martin", "Alice", "15/05/1985", 75000, "Ressources Humaines");
     chef.Afficher();
     cout << endl;
-// Création d'un Directeur
+// CrÃ©ation d'un Directeur
     Directeur directeur("Dupont", "Jean", "01/01/1980", 100000, "Informatique", "TechCorp");
     directeur.Afficher();
     return 0;
