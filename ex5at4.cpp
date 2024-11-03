@@ -3,15 +3,15 @@ using namespace std;
 
 class Test {
     private:
-    static int c; // Déclaration de la variable statique
+    static int c; // DÃ©claration de la variable statique
     public:
-    // Méthode qui compte le nombre d'appels
+    // MÃ©thode qui compte le nombre d'appels
       void call() {
-        // Incrémenter le compteur statique à chaque appel
+        // IncrÃ©menter le compteur statique Ã  chaque appel
         c++;
         cout << "La methode call() a ete appelee " << c << " fois." << endl;
     }
-    // Méthode statique pour obtenir le nombre total d'appels
+    // MÃ©thode statique pour obtenir le nombre total d'appels
       static int get_c() {
         return c;
     }
@@ -23,7 +23,7 @@ int main() {
     Test test1;
     Test test2;
 
-    // Appels de la méthode call()
+    // Appels de la mÃ©thode call()
     test1.call();
     test1.call();
     test2.call();
