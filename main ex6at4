@@ -1,0 +1,56 @@
+#ifndef POINT_H
+#define POINT_H
+
+class Point {
+private:
+    float x;
+    float y;
+
+public:
+    // Constructeur
+    Point(float x, float y);
+
+    // Fonction membre pour déplacer le point
+    void deplace(float dx, float dy);
+
+    // Fonction membre pour afficher les coordonnées du point
+    void affiche() const;
+};
+
+#endif // POINT_H
+#include <iostream>
+#include "Point.h"
+
+using namespace std;
+
+// Constructeur
+Point::Point(float x, float y) : x(x), y(y) {}
+
+// Fonction pour déplacer le point
+void Point::deplace(float dx, float dy) {
+    x += dx;
+    y += dy;
+}
+
+// Fonction pour afficher les coordonnées du point
+void Point::affiche() const {
+    cout << "Coordonnées du point : (" << x << ", " << y << ")" << endl;
+}
+#include <iostream>
+#include "Point.h"
+
+int main() {
+    // Déclaration d'un point
+    Point p(3.0, 4.0);
+
+    // Affichage initial des coordonnées
+    p.affiche();
+
+    // Déplacement du point
+    p.deplace(2.0, -1.0);
+
+    // Affichage des coordonnées après le déplacement
+    p.affiche();
+
+    return 0;
+}
