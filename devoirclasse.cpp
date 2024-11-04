@@ -32,7 +32,7 @@ NombreComplexe<T> operator*(const NombreComplexe<T>& autre) const {
    NombreComplexe <T> operator/ (const NombreComplexe<T>& autre) const {
    T denominateur =autre.re * autre.re + autre.im*autre.im;
    if(denominateur==0){
-    throw runtime_error("Division par zéro!");
+    throw runtime_error("Division par zÃ©ro!");
         }
         T newReel = (reel * autre.reel + imaginaire * autre.imaginaire) / denominateur;
         T newImaginaire = (imaginaire * autre.reel - reel * autre.imaginaire) / denominateur;
