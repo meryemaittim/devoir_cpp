@@ -1,26 +1,41 @@
 #include <iostream>
-using namespace std;
-// Fonction qui prend un tableau dynamique et sa taille
-void testFunction(int* params, size_t size) {
-    cout << "Function called with " << size << " parameters." << endl;
-}
-int main() {
-    try { // surveiller pour génerer une exception
-        for (size_t i = 1; ; i*=3) {
-            // allocation dynamique d'un tableau de taille i
-            int* params = new int[i];
-            //initialiser chaque élément du tableau avec 1
-            for (size_t j = 0; j < i; ++j) {
-                params[j] = 1;
-            }
-            // Appeler la fonction avec le tableau et sa taille
-            testFunction(params, i);
-            // Libérer la mémoire allouée
-            delete[] params;
-        }
-    } catch (...) {
-        cout << "erreur d'allocation de memoire" << endl;
+template < typename T>
+using namespace std
+class NombreComplexe {
+private:
+    T re;
+    T im;
+
+public:
+    NombreComplexe():re(0),im(0){}
+     NombreComplexe(T r,T i): re(r), im(i){}
+     NombreComplexe(const NombreComplexe<T>& autre)
+        : re(autre.re), im(autre.im) {}
+    void afficher() const {
+        cout << reel << ((im >= 0) ? " + " : " - ")
+                  << ((im >= 0) ? im : -im) << "i" << endl;
     }
-    return 0;
-}
+    NombreComplexe<T> operator+(const NombreComplexe<T>& autre) const {
+        return NombreComplexe<T>(re + autre.re, im + autre.im);
+    }
+    NombreComplexe<T> operator-(const NombreComplexe<T>& autre) const {
+        return NombreComplexe<T>(re - autre.re, im - autre.im);
+    }
+NombreComplexe<T> operator*(const NombreComplexe<T>& autre) const {
+        T newReel = re * autre.re - im * autre.im;
+        T newImaginaire = re * autre.im + im * autre.re;
+        return NombreComplexe<T>(newReel, newImaginaire);
+    }
+    NombreComplexe<T> operator/(const NombreComplexe<T>& autre) const {
+        T denominateur = autre.reel * autre.reel + autre.imaginaire * autre.imaginaire;
+        if (denominateur == 0) {
+   NombreComplexe <T> operator/ (const NombreComplexe<T>& autre) const {
+   T denominateur =autre.re * autre.re + autre.im*autre.im;
+   if(denominateur==0){
+    throw runtime_error("Division par z�ro!");
+        }
+        T newReel = (reel * autre.reel + imaginaire * autre.imaginaire) / denominateur;
+        T newImaginaire = (imaginaire * autre.reel - reel * autre.imaginaire) / denominateur;
+        return NombreComplexe<T>(newReel, newImaginaire);
+    }
 
